@@ -1,0 +1,37 @@
+<!Doctype html>
+<html>
+<head>
+<script src="node_modules/angular/angular.min.js"></script>
+<script src="app.js"></script>
+</head>
+<body ng-app="todolist">
+
+
+    <div ng-controller="ListCtrl as vm">
+
+        <form ng-submit="vm.auth(vm.listName)">
+
+            <input type="text" ng-model="vm.listName" />
+
+        </form>
+
+        <form ng-submit="vm.addTask(vm.newTaskText)">
+            <input type="text" ng-model="vm.newTaskText" />
+
+        </form>
+
+        <ul>
+          <li ng-repeat="task in vm.tasks">
+            <input type="checkbox" ng-model="task.isDone" ng-change="vm.updateTask(task)"/>
+            <span ng-bind="task.text"></span>
+            <button ng-click="vm.deleteTask(task.id)">delete</button>
+          </li>
+        </ul>
+        <button ng-click="vm.getTasks()">Refresh</button>
+    </div>
+</body>
+</html>
+
+
+
+
